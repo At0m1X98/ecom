@@ -38,3 +38,16 @@ export const getSelectionItem = (selection) => {
 export const getProductById = (id) => {
 	return mergeItems.find(item => item.id === Number(id)) || null;
 }
+
+export const filterItems = ({ brands = [], categories = [], subcategories = [], ratings = 0, maxPrice = 10000 }) => {
+	return mergeItems.filter(item => {
+		const matchesBrand = brands.length ? brands.includes(item.brand) : true;
+		const matchesCategory = categories.length ? categories.includes(item.category) : true;
+		const matchesSubcategory = subcategories.length ? subcategories.includes(item.subcategory) : true;
+		const matchesPrice = item.price <= maxPrice;
+		const matchesRating = ratings.length
+			? ratings.some(r => item.rating >= r)
+			: true;
+		return matchesBrand && matchesCategory && matchesSubcategory && matchesPrice && matchesRating;
+	})
+}

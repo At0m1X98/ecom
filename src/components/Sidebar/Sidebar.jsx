@@ -1,43 +1,110 @@
 import React from 'react'
 import './Sidebar.css'
 
-const Sidebar = () => {
+const Sidebar = ({filters, setFilter, items}) => {
+	const brands = [...new Set(items.map(item => item.brand))];
+	const categories = [...new Set(items.map(item => item.category))];
+	const subcategories = [...new Set(items.map(item => item.subcategory))];
+	const ratings = [...new Set(items.map(item => item.rating))];
+
+	const handleCheckboxChange = (key, value) => {
+		setFilter(prev => {
+			const values = new Set(prev[key]);
+			values.has(value) ? values.delete(value) :values.add(value);
+			return {
+				...prev,
+				[key]: Array.from(values),
+			};
+		});
+	};
+
+	const handlePriceChange = (e) => {
+		setFilter(prev => ({ ...prev, maxPrice: Number(e.target.value) }));
+	}
+
   	return (
 		<div className='sidebar'>
 			<div className='sidebar-container'>
 				<div className='brand'>
+					<h4>Brands</h4>
 					<ul>
-						<li>Brand1</li>
-						<li>Brand2</li>
-						<li>Brand3</li>
-						<li>Brand4</li>
+						{brands.map((brand) => (
+							<li key={brand}>
+								<label>
+									<input
+										type='checkbox'
+										onChange={() => handleCheckboxChange('brands', brand)}
+										checked={filters.brands.includes(brand)}
+									/>
+									{brand}
+								</label>
+							</li>
+						))}
 					</ul>
 				</div>
-				<div className="sidebar-category">
+
+				<div className='category'>
+					<h4>Categories</h4>
 					<ul>
-						<li>Category1</li>
-						<li>Category2</li>
-						<li>Category3</li>
-						<li>Category4</li>
+						{categories.map((category) => (
+							<li key={category}>
+								<label>
+									<input
+										type='checkbox'
+										onChange={() => handleCheckboxChange('categories', category)}
+										checked={filters.categories.includes(category)}
+									/>
+									{category}
+								</label>
+							</li>
+						))}
 					</ul>
 				</div>
-				<div className='sidebar-subcategory'>
+				<div className='subcategory'>
+					<h4>Subcategories</h4>
 					<ul>
-						<li>Subcategory1</li>
-						<li>Subcategory2</li>
-						<li>Subcategory3</li>
-						<li>Subcategory4</li>
+						{subcategories.map((subcategory) => (
+							<li key={subcategory}>
+								<label>
+									<input
+										type='checkbox'
+										onChange={() => handleCheckboxChange('subcategories', subcategory)}
+										checked={filters.subcategories.includes(subcategory)}
+									/>
+									{subcategory}
+								</label>
+							</li>
+						))}
 					</ul>
 				</div>
-				<div className='sidebar-price'>
-					<input type='range' min='1' max='10000' />
+
+				<div className='price'>
+					<h4>Price: ${filters.maxPrice}</h4>
+					<input
+						type='range'
+						min="0"
+						max="10000"
+						step="10"
+						value={filters.maxPrice}
+						onChange={handlePriceChange}
+					/>
 				</div>
-				<div className='sidebar-rating'>
+
+				<div className='rating'>
+					<h4>Ratings</h4>
 					<ul>
-						<li>Rating 1</li>
-						<li>Rating 2</li>
-						<li>Rating 3</li>
-						<li>Rating 4</li>
+						{ratings.map((rating) => (
+							<li key={rating}>
+								<label>
+									<input
+										type='checkbox'
+										onChange={() => handleCheckboxChange('ratings', rating)}
+										checked={filters.ratings.includes(rating)}
+									/>
+									{rating}+ Stars
+								</label>
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>

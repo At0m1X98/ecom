@@ -26,3 +26,23 @@
 		padding: 0 16px;
 	}
 }
+.shop {
+	margin-top: 4rem;
+	margin-bottom: 4rem;
+}
+.present {
+	display: flex;
+	width: 100%;
+	margin-top: 3rem;
+}
+
+.present-container {
+	width: 1240px;
+	margin: 0 auto;
+	display: flex;
+	gap: 2rem;
+}
+
+.outlet-container {
+	flex: 1;
+}
