@@ -1,0 +1,127 @@
+.item {
+	width: 295px;
+	height: 65%;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+	border-radius: 12px;
+	transition: all 0.5s ease;
+}
+.item:hover {
+	/*
+	transform: scale(1.05);
+	*/
+	box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.801);
+}
+.more {
+	transition: all 0.5s ease;
+}
+.more:hover {
+	transform: scale(1.05);
+}
+.item-container {
+	width: 100%;
+	height: 295px;
+	border-radius: 35px;
+}
+.item-container img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.item-info {
+	width: 100%;
+	height: 35%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	margin-top: 10px;
+}
+.item-info h2 {
+	font-size: 20px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 700;
+}
+.item-rating {
+	display: flex;
+	gap: 12px;
+}
+.item-stars {
+	display: flex;
+}
+.item-star {
+	width: 20px;
+	height: 20px;
+}
+.item-rating p {
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.item-rating span {
+	font-weight: 400;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.item-price-container {
+	display: flex;
+	gap: 10px;
+}
+.item-price {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.item-sale {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	color: rgba(138, 138, 138, 0.767);
+	text-decoration: line-through;
+}
+.item-discount {
+	background-color: rgba(255, 51, 51, 0.1);
+	color: rgb(255, 51, 51);
+	width: 60px;
+	height: 30px;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 6px 14px;
+	border-radius: 65px;
+}
+
+@media (max-width: 768px) {
+	.item {
+		width: 100%;
+		max-width: 340px;
+		margin: 0 auto;
+	}
+
+	.item-container {
+		height: 220px;
+		border-radius: 20px;
+	}
+
+	.item-info h2 {
+		font-size: 18px;
+	}
+
+	.item-rating p {
+		font-size: 14px;
+	}
+
+	.item-price,
+	.item-sale {
+		font-size: 18px;
+	}
+
+	.item-discount {
+		width: auto;
+		padding: 4px 10px;
+		font-size: 11px;
+	}
+
+	.item-star {
+		width: 16px;
+		height: 16px;
+	}
+}
