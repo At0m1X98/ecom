@@ -38,6 +38,10 @@
 	font-size: 16px;
 	cursor: pointer;
 	transition: all 0.3s ease;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
 }
 .hero-text .btn:hover {
 	background-color: rgb(156, 156, 156);

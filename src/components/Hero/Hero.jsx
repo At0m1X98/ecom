@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Hero.css"
 import hero from "../../assets/images/hero.png"
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
   	return (
@@ -16,7 +17,7 @@ const Hero = () => {
 						Whether you're looking for electronics, fashion, or home goods, 
 						we've got you covered. Shop now and experience the best deals!
 					</p>
-					<button className='btn'>Shop Now</button>
+					<Link to="/shop" className='btn'>Shop Now</Link>
 					<div className='calc-container'>
 						<div className='calc'>
 							<h2>200+</h2>
